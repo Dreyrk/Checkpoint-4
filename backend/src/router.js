@@ -36,25 +36,25 @@ router.get("/api/users/:id", getUserById);
 
 //POST
 
-router.post("/api/products", postProduct);
+router.post("/api/products", verifyToken, postProduct);
+
 //REGISTER
 router.post("/api/users", hashPassword, postUser);
 //LOGIN
 router.post(
   "/api/login",
   getUserByEmailWithPasswordAndPassToNext,
-  verifyPassword,
-  verifyToken
+  verifyPassword
 );
 
 //PUT
 
 router.put("/api/products/:id", updateProduct);
-router.put("/api/users/:id", updateUser);
+router.put("/api/users/:id", verifyToken, hashPassword, updateUser);
 
 //DELETE
 
-router.delete("/api/products", deleteProduct);
+router.delete("/api/products", verifyToken, deleteProduct);
 router.delete("/api/users", deleteUser);
 
 export default router;

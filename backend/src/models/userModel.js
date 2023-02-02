@@ -7,7 +7,11 @@ const UserSchema = new mongoose.Schema({
   email: { type: String, required: true },
   hashedPassword: { type: String, required: true },
   avatar_url: String,
-  address: String,
+  address: {
+    street: String,
+    postalCode: Number,
+    town: String,
+  },
   favs: [ProductSchema],
 });
 

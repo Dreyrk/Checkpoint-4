@@ -4,19 +4,19 @@ const loginController = {
   getUserByEmailWithPasswordAndPassToNext: async (req, res, next) => {
     const { email } = req.body;
 
-    Users.find({ email })
-      .then((users) => {
-        if (users[0] != null) {
-          req.user = users[0];
-          next();
-        } else {
-          res.sendStatus(401);
-        }
-      })
-      .catch((err) => {
-        console.error(err);
-        res.status(500).send("Error retrieving data from database");
-      });
+    try {
+      const userLogin = await Users.find({ email });
+      if (userLogin != null) {
+        req.user = userLogin[0];
+        console.log(userLogin);
+        next();
+      } else {
+        res.sendStatus(401);
+      }
+    } catch (e) {
+      console.error(e);
+      res.status(500).send("Error retrieving data from database");
+    }
   },
 };
 

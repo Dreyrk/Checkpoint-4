@@ -1,10 +1,10 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import CartPage from "./pages/CartPage";
-import Products from "./pages/Products";
-import Profile from "./pages/Profile";
-import Contact from "./pages/Contact";
+import Home from "../pages/Home";
+import CartPage from "../pages/CartPage";
+import Products from "../pages/Products";
+import Profile from "../pages/Profile";
+import Contact from "../pages/Contact";
 
 function Routing() {
   return (

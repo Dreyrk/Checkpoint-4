@@ -23,12 +23,22 @@ const productsController = {
   },
   postProduct: async (req, res) => {
     if (req.body) {
-      const { name, price, description } = req.body;
+      const {
+        name,
+        price,
+        description,
+        note = [1, 2, 3, 4],
+        category,
+        image_url = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png",
+      } = req.body;
       try {
         const newProduct = await Products.create({
           name,
           price,
           description,
+          note,
+          category,
+          image_url,
         });
 
         res.sendStatus(201);
