@@ -3,14 +3,17 @@ import "./App.css";
 import Routing from "./components/Routing";
 import Navbar from "./components/Navbar";
 import { CurrentUserContextProvider } from "./contexts/userContext";
+import { CurrentOrderContextProvider } from "./contexts/orderContext";
 
 function App() {
   return (
     <div className="App">
       <Router>
         <CurrentUserContextProvider>
-          <Navbar />
-          <Routing />
+          <CurrentOrderContextProvider>
+            <Navbar />
+            <Routing />
+          </CurrentOrderContextProvider>
         </CurrentUserContextProvider>
       </Router>
     </div>

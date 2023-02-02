@@ -2,6 +2,142 @@
   "products": {
     "data": [
       {
+        "name": "DECK ETHIC DTC LINDWORM V4",
+        "price": 239,
+        "description": "Le deck Ethic Lindworm V4 Boxed est LE deck ultime des gros streeteux. Il a fait ses preuves et ne cesse d'évoluer.",
+        "note": [1, 2, 3, 4, 5],
+        "category": "decks",
+        "image_url": "https://dissidencescootershop.com/9190-large_default/deck-ethic-dtc-lindworm-v4-boxed-150-noir.jpg"
+      },
+      {
+        "name": "DECK AZTEK 666",
+        "price": 249,
+        "description": "Ce deck est énorme! 17cm de large et une longueur jusqu'à 61cm. Pour les gros streeteux.",
+        "note": [1, 2, 3, 4, 5],
+        "category": "decks",
+        "image_url": "https://dissidencescootershop.com/8464-large_default/deck-aztek-666-noir-transparent.jpg"
+      },
+      {
+        "name": "DECK AO GOAT KOZLOV NOIR",
+        "price": 239,
+        "description": "Nouveau deck de chez AO, le GOAT, Kostya Kozlov signature.",
+        "note": [1, 2, 3, 4, 5],
+        "category": "decks",
+        "image_url": "https://dissidencescootershop.com/9452-large_default/deck-ao-goat-kozlov-noir.jpg"
+      },
+      {
+        "name": "DECK AO MAXIME BOUZID V2 OR",
+        "price": 239,
+        "description": "Voici le deuxieme deck pro model de notre Bouzid national chez AO.",
+        "note": [1, 2, 3, 4, 5],
+        "category": "decks",
+        "image_url": "https://dissidencescootershop.com/8188-large_default/deck-ao-maxime-bouzid-v2-or.jpg"
+      },
+      {
+        "name": "BAR NATIVE ARIA 31.8 NOIR",
+        "price": 109,
+        "description": "Guidon en T haut de gamme de chez native grâce à la technologie butted et l'acier traité thermiquement.",
+        "note": [1, 2, 3, 4],
+        "category": "bar",
+        "image_url": "https://dissidencescootershop.com/9697-large_default/guidon-native-aria-349-noir.jpg"
+      },
+      {
+        "name": "BAR ETHIC DTC DRYADE V2 NOIR",
+        "price": 69.9,
+        "description": "Le tout nouveau Guidon aluminium Ethic DTC , évolution comme vous l'aurez compris de la Dryade V1 qui était déjà l'un des guidon alu les plus light et les plus durables existant.",
+        "note": [1, 2, 3, 4, 5],
+        "category": "bar",
+        "image_url": "https://dissidencescootershop.com/9020-large_default/guidon-ethic-dtc-dryade-v2-noir.jpg"
+      },
+      {
+        "name": "BAR BLUNT SOUL CHROME OVERSIZED",
+        "price": 74.9,
+        "description": "Compatible SCS avec un Shim SCS adapter 34,9mm.",
+        "note": [1, 2, 3, 4],
+        "category": "bar",
+        "image_url": "https://dissidencescootershop.com/4868-large_default/guidon-blunt-soul-chrome-oversized.jpg"
+      },
+      {
+        "name": "ROUE ETHIC DTC INCUBE V2 115 12 STD ROUGE",
+        "price": 239,
+        "description": "Le deck Ethic Lindworm V4 Boxed est LE deck ultime des gros streeteux. Il a fait ses preuves et ne cesse d'évoluer.",
+        "note": [1, 2, 3, 4, 5],
+        "category": "decks",
+        "image_url": "https://dissidencescootershop.com/9026-large_default/roue-ethic-dtc-incube-v2-115-12-std-rouge.jpg"
+      },
+      {
+        "name": "ROUE ETHIC DTC ACTEON 110 NOIR",
+        "price": 34.9,
+        "description": "Comme pour tout le reste de sa gamme, ethic a renouvelé ses roues Incube, et les a enfin dérivées en version 12 STD.",
+        "note": [1, 2, 3, 4, 5],
+        "category": "wheel",
+        "image_url": "https://dissidencescootershop.com/9190-large_default/deck-ethic-dtc-lindworm-v4-boxed-150-noir.jpg"
+      },
+      {
+        "name": "DECK ETHIC DTC LINDWORM V4",
+        "price": 49.9,
+        "description": "Roue Haut de Gamme Ethic DTC.",
+        "note": [1, 2, 3, 4],
+        "category": "wheel",
+        "image_url": "https://dissidencescootershop.com/5316-large_default/roue-ethic-dtc-acteon-110-noir.jpg"
+      },
+      {
+        "name": "ROUE BLACK PEARL ORIGINAL",
+        "price": 44.9,
+        "description": "Les roues les plus performantes à ce jour.",
+        "note": [1, 2, 3, 4, 5],
+        "category": "wheel",
+        "image_url": "https://dissidencescootershop.com/4272-large_default/roue-black-pearl-original-v2-110-simple-brut.jpg"
+      },
+      {
+        "name": "FOURCHE ETHIC DTC LEGION V2 IHC NOIR",
+        "price": 59.9,
+        "description": "valeur sure et abordable.",
+        "note": [1, 2, 3],
+        "category": "fourche",
+        "image_url": "https://dissidencescootershop.com/9058-large_default/fourche-ethic-dtc-legion-v2-ihc-noir.jpg"
+      },
+      {
+        "name": "FOURCHE NATIVE VERSA BLANC ROUGE",
+        "price": 99,
+        "description": "Fourche haut de gamme de chez Native, innovante et élégante. Très belles finitions !",
+        "note": [1, 2, 3, 4, 5],
+        "category": "fourche",
+        "image_url": "https://dissidencescootershop.com/9335-large_default/fourche-native-versa-blanc-rouge.jpg"
+      },
+      {
+        "name": "FOURCHE NATIVE VERSA NOIR",
+        "price": 99,
+        "description": "Fourche haut de gamme de chez Native, innovante et élégante. Très belles finitions !",
+        "note": [1, 2, 3, 4, 5],
+        "category": "fourche",
+        "image_url": "https://dissidencescootershop.com/5006-large_default/fourche-native-versa-noir.jpg"
+      },
+      {
+        "name": "COLLIER TILT ARC ROUGE",
+        "price": 54.9,
+        "description": "Acheter un collier Tilt c'est un investissement. C'est cher mais durable, très réputés pour être les plus solide!",
+        "note": [1, 2, 3, 4, 5],
+        "category": "collier",
+        "image_url": "https://dissidencescootershop.com/4083-large_default/collier-tilt-arc-rouge.jpg"
+      },
+      {
+        "name": "COLLIER PROTO HALF KNUCKLE V2 NOIR",
+        "price": 59.9,
+        "description": "Collier iconique Proto made in USA. Pas de doute c'est du solide!",
+        "note": [1, 2, 3, 4, 5],
+        "category": "decks",
+        "image_url": "https://dissidencescootershop.com/8726-large_default/collier-proto-half-knuckle-v2-noir.jpg"
+      },
+      {
+        "name": "SCS PRIME FLASH CHROME",
+        "price": 59.9,
+        "description": "Premier SCS de la marque Prime, en alu 7075, de la solidité et sobriété, c'est tout ce qu'on demande à un scs.",
+        "note": [1, 2, 3, 4, 5],
+        "category": "SCS",
+        "image_url": "https://dissidencescootershop.com/9971-large_default/scs-prime-flash-chrome.jpg"
+      },
+      {
         "id": "GGOEAFKA087499",
         "name": "Android Small Removable Sticker Sheet",
         "description": "Show your Android pride by placing these 8 fun stickers on your technology products or accessories!",

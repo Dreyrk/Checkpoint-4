@@ -30,6 +30,7 @@ function Login() {
         .then((res) => {
           setUser(res.data.user);
           setToken(res.data.token);
+          setIsOpen(false);
           navigate("/");
         })
         .catch((e) => console.error(e));
@@ -37,7 +38,12 @@ function Login() {
   };
 
   return (
-    <div className="w-full h-full">
+    <div
+      className={
+        isOpen
+          ? "h-[80vh] w-full"
+          : "w-full h-[40%] flex items-end justify-center"
+      }>
       {!isOpen ? (
         <button
           onClick={() => setIsOpen(true)}
@@ -99,9 +105,9 @@ function Login() {
                 </label>
               </div>
               <button
-                type=""
+                type="submit"
                 className="text-white bg-red hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                Submit
+                Log in
               </button>
             </form>
           </div>

@@ -1,8 +1,12 @@
 import mongoose from "mongoose";
-import { ProductSchema } from "./productModel";
+import { ProductSchema } from "./productModel.js";
 
 const OrderSchema = new mongoose.Schema({
-  address: String,
+  address: {
+    street: String,
+    town: String,
+    postalCode: Number,
+  },
   items: [ProductSchema],
   total: Number,
   user_id: String,

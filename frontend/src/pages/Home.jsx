@@ -15,8 +15,6 @@ export default function Home() {
       .catch((e) => console.log(e));
   }, []);
 
-  console.log(products);
-
   return (
     <div className="flex flex-col gap-3">
       <ItemCarousel />

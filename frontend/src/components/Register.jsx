@@ -24,13 +24,19 @@ function Register() {
       .post("http://localhost:5000/api/users", newUser)
       .then((res) => {
         console.log(res);
-        navigate("/login");
+        navigate("/profile");
+        setIsOpen(false);
       })
       .catch((e) => console.error(e));
   };
 
   return (
-    <div className="h-screen w-screen flex flex-col justify-start items-center">
+    <div
+      className={
+        isOpen
+          ? "h-screen w-screen flex flex-col justify-start items-center"
+          : "w-full h-[40%] flex items-start justify-center"
+      }>
       {!isOpen ? (
         <button
           onClick={() => setIsOpen(true)}
@@ -40,9 +46,11 @@ function Register() {
         </button>
       ) : (
         <div className="h-full flex flex-col items-center">
-          <h1 className="text-xl mb-4">Register to our plateform</h1>
+          <h2 className="text-xl font-semibold mb-4">
+            Register to our plateform
+          </h2>
           <form
-            className="h-[70%] w-[90%] flex flex-col gap-8 bg-white p-6 rounded-md shadow-lg"
+            className="h-full w-[90%] flex flex-col gap-8 bg-white p-6 rounded-md shadow-lg"
             onSubmit={handleSubmit}>
             <label htmlFor="firstname" className="flex gap-5">
               Firstname :
