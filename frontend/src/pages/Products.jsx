@@ -24,7 +24,7 @@ function Products() {
   return (
     <div>
       <div className="mx-2 flex flex-col items-start gap-1">
-        <SearchBar />
+        <SearchBar setData={setItems} data={items} />
         <FilterBar filter={filter} setFilter={setFilter} />
       </div>
       <div className="flex flex-col gap-6 my-4 mx-4">
