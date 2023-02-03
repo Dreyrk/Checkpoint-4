@@ -1,16 +1,21 @@
 import React, { useState } from "react";
+import { useCurrentUserContext } from "../contexts/userContext";
 
-function LikeButton() {
+function LikeButton({ item }) {
   const [isClicked, setIsClicked] = useState(false);
 
+  const { user } = useCurrentUserContext();
+
   return (
-    <div className="w-[20%]">
+    <div className="w-[15%] max-md:w-[20%]">
       <svg
         viewBox="0 0 24 24"
         fill={isClicked ? "red" : "none"}
         xmlns="http://www.w3.org/2000/svg"
-        onClick={() => setIsClicked(!isClicked)}
-      >
+        onClick={() => {
+          setIsClicked(true);
+          user.favs.push(item);
+        }}>
         <g id="SVGRepo_bgCarrier" strokeWidth="0" />
         <g
           id="SVGRepo_tracerCarrier"

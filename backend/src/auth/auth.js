@@ -15,21 +15,24 @@ const hashingOptions = {
 const auth = {
   hashPassword: (req, res, next) => {
     const user = req.body;
+    if (user.password) {
+      argon2
+        .hash(user.password, hashingOptions)
+        .then((hashedPassword) => {
+          console.log(user.password);
+          delete user.password;
+          user.hashedPassword = hashedPassword;
+          console.log(user.hashedPassword);
 
-    argon2
-      .hash(user.password, hashingOptions)
-      .then((hashedPassword) => {
-        console.log(user.password);
-        delete user.password;
-        user.hashedPassword = hashedPassword;
-        console.log(user.hashedPassword);
-
-        next();
-      })
-      .catch((err) => {
-        console.error(err);
-        res.sendStatus(500);
-      });
+          next();
+        })
+        .catch((err) => {
+          console.error(err);
+          res.sendStatus(500);
+        });
+    } else {
+      next();
+    }
   },
   verifyPassword: (req, res) => {
     console.log(req.user);

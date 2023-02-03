@@ -1,97 +1,169 @@
+import axios from "axios";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
   const [isOpen, setIsOpen] = useState(false);
+  const [newUser, setNewUser] = useState({
+    firstname: "",
+    lastname: "",
+    email: "",
+    password: "",
+    address: {
+      street: "",
+      postalCode: 12345,
+      town: "",
+    },
+  });
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    axios
+      .post("http://localhost:5000/api/users", newUser)
+      .then((res) => {
+        console.log(res);
+        navigate("/profile");
+        setIsOpen(false);
+      })
+      .catch((e) => console.error(e));
+  };
 
   return (
-    <div>
+    <div
+      className={
+        isOpen
+          ? "h-screen w-screen flex flex-col justify-start items-center"
+          : "w-full h-[40%] flex items-start justify-center"
+      }>
       {!isOpen ? (
         <button
           onClick={() => setIsOpen(true)}
-          className="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-          type="button"
-        >
+          className="w-[80%] border text-white bg-red p-2 rounded-xl"
+          type="button">
           Register
         </button>
       ) : (
-        <div className="px-6 py-6 lg:px-8">
-          <h3 className="mb-4 text-xl font-medium text-gray-900 dark:text-white">
-            Log in to our platform
-          </h3>
-          <form className="space-y-6">
-            <div>
-              <label
-                htmlFor="email"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >
-                Your email
-              </label>
+        <div className="h-full flex flex-col items-center">
+          <h2 className="text-xl font-semibold mb-4">
+            Register to our plateform
+          </h2>
+          <form
+            className="h-full w-[90%] flex flex-col gap-8 bg-white p-6 rounded-md shadow-lg"
+            onSubmit={handleSubmit}>
+            <label htmlFor="firstname" className="flex gap-5">
+              Firstname :
               <input
-                type="email"
-                name="email"
+                className="border rounded-md focus:border-red"
+                id="firstname"
+                type="text"
+                placeholder="John"
+                onChange={(e) =>
+                  setNewUser({ ...newUser, firstname: e.target.value })
+                }
+              />
+            </label>
+            <label htmlFor="lastname" className="flex gap-5">
+              Lastname :
+              <input
+                className="border rounded-md"
+                id="lastname"
+                type="text"
+                placeholder="Doe"
+                onChange={(e) =>
+                  setNewUser({ ...newUser, lastname: e.target.value })
+                }
+              />
+            </label>
+            <label htmlFor="email" className="flex gap-12">
+              Email :
+              <input
+                className="border rounded-md"
                 id="email"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                type="email"
                 placeholder="name@email.com"
-                required
+                onChange={(e) =>
+                  setNewUser({ ...newUser, email: e.target.value })
+                }
               />
-            </div>
-            <div>
-              <label
-                htmlFor="password"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >
-                Your password
-              </label>
+            </label>
+            <label htmlFor="password" className="flex gap-4">
+              Password :
               <input
-                type="password"
-                name="password"
+                className="border rounded-md"
                 id="password"
-                placeholder="••••••••"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                required
+                type="password"
+                placeholder="**********"
               />
-            </div>
-            <div className="flex justify-between">
-              <div className="flex items-start">
-                <div className="flex items-center h-5">
-                  <input
-                    id="remember"
-                    type="checkbox"
-                    value=""
-                    className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-600 dark:border-gray-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800"
-                    required
-                  />
-                </div>
-                <label
-                  htmlFor="remember"
-                  className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                >
-                  Remember me
-                </label>
-              </div>
-              <Link
-                to="/profile"
-                className="text-sm text-blue-700 hover:underline dark:text-blue-500"
-              >
-                Lost Password?
-              </Link>
+            </label>
+            <label
+              htmlFor="passwordConfirmed"
+              className="flex gap-4 items-center justify-start text-xs">
+              Confirm password :
+              <input
+                className="h-6 border rounded-md"
+                id="passwordConfirmed"
+                type="password"
+                placeholder="**********"
+                onChange={(e) =>
+                  setNewUser({ ...newUser, password: e.target.value })
+                }
+              />
+            </label>
+            <p>Shipping Address :</p>
+            <div className="flex flex-wrap gap-4">
+              <label htmlFor="street" className="w-[50%] text-sm">
+                Street :
+                <input
+                  type="text"
+                  id="street"
+                  className="w-full border rounded-md"
+                  onChange={(e) =>
+                    setNewUser({
+                      ...newUser,
+                      address: { ...newUser.address, street: e.target.value },
+                    })
+                  }
+                />
+              </label>
+              <label htmlFor="postalCode" className="w-[30%] text-sm">
+                Postal Code :
+                <input
+                  type="number"
+                  id="postalCode"
+                  className="w-full border rounded-md"
+                  onChange={(e) =>
+                    setNewUser({
+                      ...newUser,
+                      address: {
+                        ...newUser.address,
+                        postalCode: e.target.value,
+                      },
+                    })
+                  }
+                />
+              </label>
+              <label htmlFor="town" className="w-[50%] text-sm">
+                Town :
+                <input
+                  type="text"
+                  id="town"
+                  className="w-full border rounded-md"
+                  onChange={(e) =>
+                    setNewUser({
+                      ...newUser,
+                      address: { ...newUser.address, town: e.target.value },
+                    })
+                  }
+                />
+              </label>
             </div>
             <button
-              type="submit"
-              className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            >
-              Login to your account
+              className="w-[50%] h-8 self-center bg-red rounded-md text-white shadow-sm"
+              type="submit">
+              Register
             </button>
-            <div className="text-sm flex justify-evenly font-medium text-gray-500 dark:text-gray-300">
-              <p>Not registered?</p>
-              <Link
-                to="/register"
-                className="text-blue-700 hover:underline dark:text-blue-500"
-              >
-                Create account
-              </Link>
-            </div>
           </form>
         </div>
       )}
