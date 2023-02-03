@@ -22,7 +22,7 @@ export default function Home() {
         <h2 className="ml-4 mb-4 text-2xl">Most Popular :</h2>
         <div className="h-[25%] w-[80%] m-auto mb-4 flex flex-col gap-6">
           {products.map((item) => (
-            <ItemCard item={item} />
+            <ItemCard key={item._id} item={item} />
           ))}
         </div>
       </div>

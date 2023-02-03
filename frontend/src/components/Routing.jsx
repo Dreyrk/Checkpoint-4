@@ -7,6 +7,7 @@ import Profile from "../pages/Profile";
 import Contact from "../pages/Contact";
 import OrdersPage from "../pages/OrdersPage";
 import FavsPage from "../pages/FavsPage";
+import NotFound from "./NotFound";
 
 function Routing({ setLogged }) {
   return (
@@ -18,6 +19,7 @@ function Routing({ setLogged }) {
       <Route path="/contact" element={<Contact />} />
       <Route path="/orders" element={<OrdersPage />} />
       <Route path="/favs" element={<FavsPage />} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }
