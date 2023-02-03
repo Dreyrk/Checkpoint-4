@@ -39,7 +39,10 @@ function ItemCard({ item }) {
           <button
             type="button"
             className="text-white bg-red font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-            onClick={() => currentOrder.items.push(item)}>
+            onClick={() => {
+              currentOrder.items.push(item);
+              console.log(currentOrder.items);
+            }}>
             Add to cart
           </button>
         </div>

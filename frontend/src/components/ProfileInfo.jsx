@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 function ProfileInfo() {
   const navigate = useNavigate();
-  const { user } = useCurrentUserContext();
+  const { user, setUser } = useCurrentUserContext();
 
   const [modify, setModify] = useState(false);
 
@@ -23,8 +23,10 @@ function ProfileInfo() {
   });
 
   const handleModify = () => {
+    const body = JSON.stringify(userModify);
+
     axios
-      .put(`http://localhost:5000/api/users/${user._id}`, userModify)
+      .put(`http://localhost:5000/api/users/${user._id}`, body)
       .then(() => console.log("Modified"))
       .catch((e) => console.error(e));
 
@@ -38,9 +40,9 @@ function ProfileInfo() {
         postalCode: user.address.postalCode,
         town: user.address.town,
       },
-      favs: user.favs,
     });
     setModify(false);
+    setUser(userModify);
   };
 
   return (
@@ -116,7 +118,7 @@ function ProfileInfo() {
               id="street"
               type="text"
               disabled={!modify && "disabled"}
-              value={!modify && user.address.street}
+              value={!modify ? user.address.street : userModify.address.street}
               onChange={(e) =>
                 setUserModify({
                   ...userModify,
@@ -138,7 +140,11 @@ function ProfileInfo() {
               }
               id="postalCode"
               type="text"
-              value={!modify && user.address.postalCode}
+              value={
+                !modify
+                  ? user.address.postalCode
+                  : userModify.address.postalCode
+              }
               onChange={(e) =>
                 setUserModify({
                   ...userModify,
@@ -163,7 +169,7 @@ function ProfileInfo() {
               }
               id="town"
               type="text"
-              value={!modify && user.address.town}
+              value={!modify ? user.address.town : userModify.address.town}
               onChange={(e) =>
                 setUserModify({
                   ...userModify,

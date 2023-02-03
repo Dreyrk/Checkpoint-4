@@ -2,14 +2,12 @@ import React from "react";
 import OrderTable from "./OrderTable";
 
 function Order({ order }) {
-  const { items } = order;
-
   console.log(order);
 
   return (
     <div>
       <div className="w-[90%] h-full mx-auto flex flex-col gap-12">
-        <OrderTable items={items} orderName={order.address} />
+        <OrderTable order={order} orderName={order.address.street} />
       </div>
     </div>
   );

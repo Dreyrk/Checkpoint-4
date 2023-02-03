@@ -1,6 +1,8 @@
 import React from "react";
 
-function OrderTable({ items, orderName }) {
+function OrderTable({ order, orderName }) {
+  console.log(order);
+
   return (
     <div class="relative overflow-x-auto">
       <p className="border bg-red p-2 text-white rounded-md font-semibold">
@@ -21,7 +23,7 @@ function OrderTable({ items, orderName }) {
           </tr>
         </thead>
         <tbody>
-          {items.map((item) => (
+          {order.items.map((item) => (
             <tr
               key={item._id}
               class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">

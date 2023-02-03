@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import { useCurrentOrderContext } from "../contexts/orderContext";
 import CartItem from "../components/CartItem";
 import { useCurrentUserContext } from "../contexts/userContext";
@@ -7,7 +8,9 @@ import axios from "axios";
 function CartPage() {
   const { currentOrder, setCurrentOrder } = useCurrentOrderContext();
   const { user } = useCurrentUserContext();
-  const { items } = currentOrder;
+  const navigate = useNavigate();
+
+  console.log(currentOrder);
 
   const handleOrder = () => {
     const totalArray = [];
@@ -20,7 +23,6 @@ function CartPage() {
       (accumulator, currentValue) => accumulator + currentValue
     );
 
-    console.log(user._id);
     setCurrentOrder({
       ...currentOrder,
       address: user.address,
@@ -28,11 +30,11 @@ function CartPage() {
       user_id: user._id,
     });
 
-    const body = JSON.stringify(currentOrder);
+    console.log(currentOrder);
 
     axios
-      .post("http://localhost:5000/api/orders", body)
-      .then((res) => console.log(res))
+      .post("http://localhost:5000/api/orders", currentOrder)
+      .then(() => navigate("/"))
       .catch((e) => console.error(e));
   };
 
@@ -40,8 +42,8 @@ function CartPage() {
     <div>
       <div>
         <ul>
-          {items.map((item) => (
-            <li key={item._id}>
+          {currentOrder.items.map((item) => (
+            <li className="mb-2" key={item._id}>
               <CartItem item={item} />
             </li>
           ))}

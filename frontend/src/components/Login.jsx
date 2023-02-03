@@ -17,7 +17,6 @@ function Login() {
     e.preventDefault();
 
     if (loginInfos) {
-      // on appelle le back
       axios({
         method: "post",
         url: "/api/login",

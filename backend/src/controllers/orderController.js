@@ -1,4 +1,5 @@
 import Orders from "../models/orderModel.js";
+import Products from "../models/productModel.js";
 
 const orderController = {
   getAllOrders: async (req, res) => {
@@ -38,11 +39,13 @@ const orderController = {
   createOrder: async (req, res) => {
     const { address, items, total, user_id } = req.body;
     try {
+      const itemstopush = await Products.find({ _id: items._id });
+
       const order = await Orders.create({
         address,
         total,
         user_id,
-        items,
+        items: itemstopush,
       });
 
       res.status(201).send(order);

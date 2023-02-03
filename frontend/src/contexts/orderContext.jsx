@@ -13,6 +13,7 @@ export function CurrentOrderContextProvider({ children }) {
     user_id: "",
     items: [],
   });
+
   return (
     // eslint-disable-next-line react/jsx-no-constructed-context-values
     <CurrentOrderContext.Provider value={{ currentOrder, setCurrentOrder }}>

@@ -61,7 +61,7 @@ router.post(
 //PUT
 
 router.put("/api/products/:id", updateProduct);
-router.put("/api/users/:id", verifyToken, hashPassword, updateUser);
+router.put("/api/users/:id", hashPassword, updateUser);
 
 //DELETE
 
