@@ -15,8 +15,14 @@ const {
   deleteProduct,
 } = productsController;
 
-const { getAllUsers, getUserById, postUser, updateUser, deleteUser } =
-  usersController;
+const {
+  getAllUsers,
+  getUserById,
+  postUser,
+  updateUser,
+  deleteUser,
+  insertFavs,
+} = usersController;
 
 const { getAllOrders, getOrderById, createOrder, getOrderByUserId } =
   orderController;
@@ -49,6 +55,8 @@ router.post("/api/orders", createOrder);
 
 router.post("/api/products", postProduct);
 
+//USER
+router.post("/favs/insert/:user_id", insertFavs);
 //REGISTER
 router.post("/api/users", hashPassword, postUser);
 //LOGIN

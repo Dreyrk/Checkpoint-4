@@ -93,6 +93,21 @@ const usersController = {
       res.sendStatus(400);
     }
   },
+  insertFavs: async (req, res) => {
+    const { items } = req.body;
+    const { user_id } = req.params;
+
+    try {
+      const user = await Users.findById(user_id);
+
+      await items.map((item) => user.favs.push(item));
+
+      res.status(201).send(user);
+    } catch (e) {
+      console.error(e);
+      res.sendStatus(500);
+    }
+  },
 };
 
 export default usersController;
