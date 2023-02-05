@@ -94,15 +94,50 @@ const usersController = {
     }
   },
   insertFavs: async (req, res) => {
-    const { items } = req.body;
+    const items = req.body;
     const { user_id } = req.params;
+    console.log(items);
 
     try {
       const user = await Users.findById(user_id);
 
-      await items.map((item) => user.favs.push(item));
+      console.log(user);
+
+      if (Array.isArray(items)) {
+        items.map((item) => user.favs.push(item));
+      } else {
+        await user.favs.push(items);
+      }
 
       res.status(201).send(user);
+    } catch (e) {
+      console.error(e);
+      res.sendStatus(500);
+    }
+  },
+  removeFavs: async (req, res) => {
+    const items = req.body;
+    const { user_id } = req.params;
+    console.log(items);
+
+    try {
+      const user = Users.findById(user_id);
+      console.log(user);
+
+      if (Array.isArray(items)) {
+        const newArrayOfFavs = items.map((item) =>
+          user.favs.filter((favs) => favs !== item)
+        );
+
+        await Users.findOneAndUpdate(user_id, { favs: newArrayOfFavs });
+      } else {
+        const newFavs = await user.favs.filter((favs) => favs !== items);
+        console.log(newFavs);
+
+        await Users.findOneAndUpdate(user_id, { favs: newFavs });
+      }
+
+      res.sendStatus(204);
     } catch (e) {
       console.error(e);
       res.sendStatus(500);

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 import { useCurrentUserContext } from "../contexts/userContext";
 
 function LikeButton({ item }) {
@@ -6,16 +7,28 @@ function LikeButton({ item }) {
 
   const { user } = useCurrentUserContext();
 
+  const handleFav = () => {
+    if (isClicked) {
+      axios
+        .put(`http://localhost:5000/favs/remove/${user._id}`, item)
+        .then((res) => console.log(res))
+        .catch((e) => console.error(e));
+    } else {
+      axios
+        .post(`http://localhost:5000/favs/insert/${user._id}`, item)
+        .then((res) => console.log(res))
+        .catch((e) => console.error(e));
+      setIsClicked(true);
+    }
+  };
+
   return (
     <div className="w-[15%] max-md:w-[20%]">
       <svg
         viewBox="0 0 24 24"
         fill={isClicked ? "red" : "none"}
         xmlns="http://www.w3.org/2000/svg"
-        onClick={() => {
-          setIsClicked(true);
-          user.favs.push(item);
-        }}>
+        onClick={handleFav}>
         <g id="SVGRepo_bgCarrier" strokeWidth="0" />
         <g
           id="SVGRepo_tracerCarrier"
